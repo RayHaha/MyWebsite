@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,13 +8,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import ThemeSwitch from "./ThemeSwitch";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-const pages = ["Home", "About", "Experience", "Skils", "Projects", "Contact"];
+const pages = ["Home", "Experience", "Skils", "Projects", "Contact"];
 
 const NavBar = (props) => {
   const { mode, themeOnClick } = props;
@@ -30,7 +29,9 @@ const NavBar = (props) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      sx={{ height: "65px", bgcolor: mode === "dark" ? "black" : "#f8f9fa" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -43,7 +44,7 @@ const NavBar = (props) => {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              color: "inherit",
+              color: mode === "dark" ? "white" : "black",
               textDecoration: "none",
             }}
           >
@@ -57,7 +58,7 @@ const NavBar = (props) => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color={mode === "dark" ? "white" : "black"}
             >
               <MenuIcon />
             </IconButton>
@@ -97,7 +98,7 @@ const NavBar = (props) => {
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              color: "inherit",
+              color: mode === "dark" ? "white" : "black",
               textDecoration: "none",
             }}
           >
@@ -109,7 +110,11 @@ const NavBar = (props) => {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: mode === "dark" ? "white" : "black",
+                    display: "block",
+                  }}
                 >
                   {page}
                 </Button>
@@ -118,11 +123,14 @@ const NavBar = (props) => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="switch theme">
-              <IconButton sx={{ p: 0 }} onClick={themeOnClick} color="inherit">
-                {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
-              </IconButton>
-            </Tooltip>
+            <FormControlLabel
+              control={
+                <ThemeSwitch
+                  checked={mode === "dark"}
+                  onChange={themeOnClick}
+                />
+              }
+            />
           </Box>
         </Toolbar>
       </Container>
