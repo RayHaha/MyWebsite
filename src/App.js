@@ -8,6 +8,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Home from "./pages/Home/Home";
+import Experience from "./pages/Experience/Experience";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -41,6 +42,19 @@ const App = (props) => {
           </Fab>
         </ScrollTop>
       </Box>
+      <Box
+        bgcolor={theme.palette.mode === "dark" ? "#4a4a4a" : "#efe1bd"}
+        sx={{
+          display: "flex",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "text.primary",
+          borderRadius: 1,
+        }}
+      >
+        <Experience />
+      </Box>
     </>
   );
 };
@@ -61,6 +75,22 @@ export default function ToggleColorMode() {
       createTheme({
         palette: {
           mode,
+          secondary: {
+            main: "#e9d5a1",
+            light: "#e9d5a1",
+            dark: "#4a4a4a",
+          },
+        },
+        components: {
+          MuiMenu: {
+            styleOverrides: {
+              list: {
+                '&[role="menu"]': {
+                  backgroundColor: mode === "dark" ? "#4a4a4a" : "#e9d5a1",
+                },
+              },
+            },
+          },
         },
       }),
     [mode]

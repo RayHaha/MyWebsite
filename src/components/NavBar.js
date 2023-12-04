@@ -30,7 +30,10 @@ const NavBar = (props) => {
 
   return (
     <AppBar
-      sx={{ height: "65px", bgcolor: mode === "dark" ? "black" : "#f8f9fa" }}
+      color="secondary"
+      sx={{
+        height: "65px",
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -65,6 +68,7 @@ const NavBar = (props) => {
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
+              color="secondary"
               anchorOrigin={{
                 vertical: "bottom",
                 horizontal: "left",
@@ -93,7 +97,7 @@ const NavBar = (props) => {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              mr: -1,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
@@ -106,7 +110,11 @@ const NavBar = (props) => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <AnchorLink key={page} href={"#" + page}>
+              <AnchorLink
+                key={page}
+                href={"#" + page}
+                style={{ textDecoration: "none" }}
+              >
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -122,7 +130,7 @@ const NavBar = (props) => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, mr: -1 }}>
             <FormControlLabel
               control={
                 <ThemeSwitch

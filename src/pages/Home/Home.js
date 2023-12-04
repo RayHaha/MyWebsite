@@ -14,7 +14,7 @@ const Home = (props) => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         width: "100vw",
-        height: `calc(100vh - 65px)`,
+        height: `calc(100vh - 64px)`,
         opacity: "0.8",
       }}
     >
