@@ -2,17 +2,15 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import NavBar from "./components/NavBar";
-import ScrollTop from "./components/ScrollTop";
-import Fab from "@mui/material/Fab";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Home from "./pages/Home/Home";
 import Experience from "./pages/Experience/Experience";
+import Skills from "./pages/Skills/Skills";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
-const App = (props) => {
+const App = () => {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
 
@@ -36,11 +34,6 @@ const App = (props) => {
           themeOnClick={colorMode.toggleColorMode}
         />
         <Home mode={theme.palette.mode} />
-        <ScrollTop {...props}>
-          <Fab size="small" aria-label="scroll back to top">
-            <KeyboardArrowUpIcon />
-          </Fab>
-        </ScrollTop>
       </Box>
       <Box
         bgcolor={theme.palette.mode === "dark" ? "#4a4a4a" : "#efe1bd"}
@@ -54,6 +47,19 @@ const App = (props) => {
         }}
       >
         <Experience />
+      </Box>
+      <Box
+        bgcolor={"#202020"}
+        sx={{
+          display: "flex",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
+          borderRadius: 1,
+        }}
+      >
+        <Skills />
       </Box>
     </>
   );

@@ -24,7 +24,11 @@ const EducationItem = (props) => {
   } = props;
   return (
     <TimelineItem>
-      <TimelineOppositeContent color="inherit" sx={{ mt: 1 }} variant="body2">
+      <TimelineOppositeContent
+        color="inherit"
+        sx={{ mt: 1, display: { xs: "none", md: "block" } }}
+        variant="body2"
+      >
         {time}
       </TimelineOppositeContent>
       <TimelineSeparator>
@@ -39,21 +43,30 @@ const EducationItem = (props) => {
             textAlign: "left",
           }}
         >
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          <Typography component="div" variant="h6" sx={{ fontWeight: "bold" }}>
             {title}
           </Typography>
           <Link href={organizationLink} underline="none" target="_blank">
             <Stack direction="row" sx={{ alignItems: "center", color: "blue" }}>
               <LinkIcon sx={{ mr: "3px" }} />
-              <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              <Typography
+                component="div"
+                variant="body2"
+                sx={{ fontWeight: "bold" }}
+              >
                 {organization}
               </Typography>
             </Stack>
           </Link>
+          <Box sx={{ mb: 1, display: { xs: "block", md: "none" } }}>
+            <Typography component="div" variant="body2">
+              {time}
+            </Typography>
+          </Box>
           {contents?.length > 0 &&
-            contents.map((content) => (
-              <>
-                <Typography variant="body2">
+            contents.map((content, index) => (
+              <React.Fragment key={index}>
+                <Typography component="div" variant="body2">
                   <b>{content.name}</b>
                   {content.else}
                 </Typography>
@@ -63,15 +76,17 @@ const EducationItem = (props) => {
                     sx={{ alignItems: "center", color: "blue" }}
                   >
                     <LinkIcon sx={{ mr: "3px" }} />
-                    <Typography variant="body2">{content.doi}</Typography>
+                    <Typography component="div" variant="body2">
+                      {content.doi}
+                    </Typography>
                   </Stack>
                 </Link>
-              </>
+              </React.Fragment>
             ))}
           {interns?.length > 0 &&
-            interns.map((intern) => (
-              <>
-                <Typography variant="body2" sx={{ mt: 1 }}>
+            interns.map((intern, index) => (
+              <React.Fragment key={index}>
+                <Typography component="div" variant="body2" sx={{ mt: 1 }}>
                   <Grid container justifyContent="space-between">
                     <Grid item>
                       <b>{intern.title}</b>
@@ -89,20 +104,24 @@ const EducationItem = (props) => {
                     sx={{ alignItems: "center", color: "blue" }}
                   >
                     <LinkIcon sx={{ mr: "3px" }} />
-                    <Typography variant="body2">
+                    <Typography component="div" variant="body2">
                       {intern.organization}
                     </Typography>
                   </Stack>
                 </Link>
                 {intern.contents.length > 0 &&
-                  intern.contents.map((content) => (
-                    <Typography variant="body2">{content}</Typography>
+                  intern.contents.map((content, index) => (
+                    <Typography component="div" variant="body2" key={index}>
+                      {content}
+                    </Typography>
                   ))}
-              </>
+              </React.Fragment>
             ))}
           <Box sx={{ p: 1 }}>
             {skills.length > 0 &&
-              skills.map((skill) => <TimelineChip label={skill} />)}
+              skills.map((skill, index) => (
+                <TimelineChip label={skill} key={index} />
+              ))}
           </Box>
         </TimelineCard>
       </TimelineContent>

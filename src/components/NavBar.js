@@ -13,7 +13,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import ThemeSwitch from "./ThemeSwitch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-const pages = ["Home", "Experience", "Skils", "Projects", "Contact"];
+const pages = ["Home", "Experience", "Skills", "Projects", "Contact"];
 
 const NavBar = (props) => {
   const { mode, themeOnClick } = props;
@@ -108,12 +108,14 @@ const NavBar = (props) => {
           >
             YU-JUI
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <AnchorLink
                 key={page}
                 href={"#" + page}
                 style={{ textDecoration: "none" }}
+                offset="65"
               >
                 <Button
                   key={page}

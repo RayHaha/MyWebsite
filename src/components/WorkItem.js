@@ -16,7 +16,11 @@ const WorkItem = (props) => {
     props;
   return (
     <TimelineItem>
-      <TimelineOppositeContent color="inherit" sx={{ mt: 1 }} variant="body2">
+      <TimelineOppositeContent
+        color="inherit"
+        sx={{ mt: 1, display: { xs: "none", md: "block" } }}
+        variant="body2"
+      >
         {time}
       </TimelineOppositeContent>
       <TimelineSeparator>
@@ -31,25 +35,38 @@ const WorkItem = (props) => {
             textAlign: "left",
           }}
         >
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          <Typography component="div" variant="h6" sx={{ fontWeight: "bold" }}>
             {title}
           </Typography>
           <Link href={organizationLink} underline="none" target="_blank">
             <Stack direction="row" sx={{ alignItems: "center", color: "blue" }}>
               <LinkIcon sx={{ mr: "3px" }} />
-              <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              <Typography
+                component="div"
+                variant="body2"
+                sx={{ fontWeight: "bold" }}
+              >
                 {organization}
               </Typography>
             </Stack>
           </Link>
+          <Box sx={{ mb: 1, display: { xs: "block", md: "none" } }}>
+            <Typography component="div" variant="body2">
+              {time}
+            </Typography>
+          </Box>
           {contents?.length > 0 &&
-            contents.map((content) =>
+            contents.map((content, index) =>
               content.hasDetails ? (
-                <>
-                  <Typography variant="body2">{content.description}</Typography>
+                <React.Fragment key={index}>
+                  <Typography component="div" variant="body2">
+                    {content.description}
+                  </Typography>
                   {content.details.length > 0 &&
                     content.details.map((detail, index) => (
                       <Typography
+                        key={index}
+                        component="div"
                         variant="body2"
                         sx={{
                           ml: 1,
@@ -59,16 +76,23 @@ const WorkItem = (props) => {
                         {detail}
                       </Typography>
                     ))}
-                </>
+                </React.Fragment>
               ) : (
-                <Typography variant="body2" sx={{ mb: 1 }}>
+                <Typography
+                  component="div"
+                  variant="body2"
+                  sx={{ mb: 1 }}
+                  key={index}
+                >
                   {content.description}
                 </Typography>
               )
             )}
           <Box sx={{ p: 1 }}>
             {skills.length > 0 &&
-              skills.map((skill) => <TimelineChip label={skill} />)}
+              skills.map((skill, index) => (
+                <TimelineChip label={skill} key={index} />
+              ))}
           </Box>
         </TimelineCard>
       </TimelineContent>
