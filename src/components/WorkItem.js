@@ -1,15 +1,18 @@
 import React from "react";
-import { Typography, Link, Stack, Box } from "@mui/material";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import TimelineDot from "@mui/lab/TimelineDot";
+import { Typography, Box } from "@mui/material";
+import {
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineOppositeContent,
+  TimelineDot,
+} from "@mui/lab";
 import WorkIcon from "@mui/icons-material/Work";
 import TimelineChip from "./TimelineChip";
-import LinkIcon from "@mui/icons-material/Link";
 import TimelineCard from "./TimelineCard";
+import StyledLink from "./StyledLink";
+import Body2Typography from "./Body2Typography";
 
 const WorkItem = (props) => {
   const { time, title, organization, organizationLink, contents, skills } =
@@ -38,54 +41,36 @@ const WorkItem = (props) => {
           <Typography component="div" variant="h6" sx={{ fontWeight: "bold" }}>
             {title}
           </Typography>
-          <Link href={organizationLink} underline="none" target="_blank">
-            <Stack direction="row" sx={{ alignItems: "center", color: "blue" }}>
-              <LinkIcon sx={{ mr: "3px" }} />
-              <Typography
-                component="div"
-                variant="body2"
-                sx={{ fontWeight: "bold" }}
-              >
-                {organization}
-              </Typography>
-            </Stack>
-          </Link>
+          <StyledLink
+            content={organization}
+            url={organizationLink}
+            isBold={true}
+          />
           <Box sx={{ mb: 1, display: { xs: "block", md: "none" } }}>
-            <Typography component="div" variant="body2">
-              {time}
-            </Typography>
+            <Body2Typography>{time}</Body2Typography>
           </Box>
           {contents?.length > 0 &&
             contents.map((content, index) =>
               content.hasDetails ? (
                 <React.Fragment key={index}>
-                  <Typography component="div" variant="body2">
-                    {content.description}
-                  </Typography>
+                  <Body2Typography>{content.description}</Body2Typography>
                   {content.details.length > 0 &&
                     content.details.map((detail, index) => (
-                      <Typography
+                      <Body2Typography
                         key={index}
-                        component="div"
-                        variant="body2"
                         sx={{
                           ml: 1,
                           mb: index === content.details.length - 1 ? 1 : 0,
                         }}
                       >
                         {detail}
-                      </Typography>
+                      </Body2Typography>
                     ))}
                 </React.Fragment>
               ) : (
-                <Typography
-                  component="div"
-                  variant="body2"
-                  sx={{ mb: 1 }}
-                  key={index}
-                >
+                <Body2Typography sx={{ mb: 1 }} key={index}>
                   {content.description}
-                </Typography>
+                </Body2Typography>
               )
             )}
           <Box sx={{ p: 1 }}>

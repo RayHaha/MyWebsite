@@ -1,22 +1,26 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Button,
+  MenuItem,
+  FormControlLabel,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import ThemeSwitch from "./ThemeSwitch";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 const pages = ["Home", "Experience", "Skills", "Projects", "Contact"];
 
 const NavBar = (props) => {
   const { mode, themeOnClick } = props;
+
+  const wordColor = mode === "dark" ? "white" : "black";
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -41,13 +45,12 @@ const NavBar = (props) => {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              color: mode === "dark" ? "white" : "black",
+              color: wordColor,
               textDecoration: "none",
             }}
           >
@@ -61,9 +64,8 @@ const NavBar = (props) => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color={mode === "dark" ? "white" : "black"}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: wordColor }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -85,9 +87,18 @@ const NavBar = (props) => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+                <AnchorLink
+                  key={page}
+                  href={"#" + page}
+                  style={{ textDecoration: "none" }}
+                  offset="65"
+                >
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center" sx={{ color: wordColor }}>
+                      {page}
+                    </Typography>
+                  </MenuItem>
+                </AnchorLink>
               ))}
             </Menu>
           </Box>
@@ -95,14 +106,13 @@ const NavBar = (props) => {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: -1,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              color: mode === "dark" ? "white" : "black",
+              color: wordColor,
               textDecoration: "none",
             }}
           >
@@ -122,7 +132,7 @@ const NavBar = (props) => {
                   onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
-                    color: mode === "dark" ? "white" : "black",
+                    color: wordColor,
                     display: "block",
                   }}
                 >

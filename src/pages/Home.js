@@ -14,7 +14,7 @@ const Home = (props) => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         width: "100vw",
-        height: `calc(100vh - 64px)`,
+        height: `calc(100vh - 55px)`,
         opacity: "0.8",
       }}
     >
@@ -23,8 +23,8 @@ const Home = (props) => {
         alignItems="center"
         sx={{ width: "100%", height: "100%" }}
       >
-        <Grid item container justifyContent="center" xs={12}>
-          <Grid item container justifyContent="center" xs={12}>
+        <Grid container justifyContent="center">
+          <Grid item xs={12}>
             <Typography
               variant="h3"
               align="center"
@@ -37,14 +37,14 @@ const Home = (props) => {
               Yu-Jui Chang
             </Typography>
           </Grid>
-          <Grid item container justifyContent="center" xs={12}>
+          <Grid>
             <TypeAnimation
               sequence={[
                 "Software Engineer",
                 1000,
                 "Software Developer",
                 1000,
-                "Full Stack Developer",
+                "Full-Stack Developer",
                 1000,
               ]}
               wrapper="span"

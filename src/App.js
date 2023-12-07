@@ -4,9 +4,11 @@ import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import NavBar from "./components/NavBar";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
-import Home from "./pages/Home/Home";
-import Experience from "./pages/Experience/Experience";
-import Skills from "./pages/Skills/Skills";
+import Home from "./pages/Home";
+import Experience from "./pages/Experience";
+import Skills from "./pages/Skills";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -61,6 +63,32 @@ const App = () => {
       >
         <Skills />
       </Box>
+      <Box
+        bgcolor={theme.palette.mode === "dark" ? "#4a4a4a" : "#efe1bd"}
+        sx={{
+          display: "flex",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "text.primary",
+          borderRadius: 1,
+        }}
+      >
+        <Projects />
+      </Box>
+      <Box
+        bgcolor={"#202020"}
+        sx={{
+          display: "flex",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
+          borderRadius: 1,
+        }}
+      >
+        <Contact />
+      </Box>
     </>
   );
 };
@@ -94,6 +122,13 @@ export default function ToggleColorMode() {
                 '&[role="menu"]': {
                   backgroundColor: mode === "dark" ? "#4a4a4a" : "#e9d5a1",
                 },
+              },
+            },
+          },
+          MuiSvgIcon: {
+            styleOverrides: {
+              root: {
+                color: "white",
               },
             },
           },
