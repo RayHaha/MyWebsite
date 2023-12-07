@@ -1,7 +1,7 @@
 const Projects = [
   {
     name: "React Portfolio",
-    link: "https://yu-jui-chang-website.web.app/",
+    link: "https://Rayhaha.github.io/MyWebsite",
     imageLink: "/images/react.png",
     content: "A performant, accessible, progressive React portfolio.",
     githubLink: "https://github.com/RayHaha/MyWebsite",
