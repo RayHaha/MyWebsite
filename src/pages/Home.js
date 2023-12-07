@@ -1,6 +1,8 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import { TypeAnimation } from "react-type-animation";
+import sun from "../assets/sun.jpg";
+import night from "../assets/night.jpg";
 
 const Home = (props) => {
   const { mode } = props;
@@ -8,10 +10,7 @@ const Home = (props) => {
     <div
       id="Home"
       style={{
-        backgroundImage:
-          mode === "light"
-            ? "url(./images/sun.jpg)"
-            : "url(./images/night.jpg)",
+        backgroundImage: mode === "light" ? `url(${sun})` : `url(${night})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",

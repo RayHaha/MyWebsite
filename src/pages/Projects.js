@@ -15,7 +15,7 @@ const Projects = () => {
               key={index}
               name={project.name}
               link={project.link}
-              imageLink={project.imageLink}
+              imageSrc={project.imageSrc}
               content={project.content}
               githubLink={project.githubLink}
             />

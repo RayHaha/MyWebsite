@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 const ProjectCard = (props) => {
-  const { name, link, imageLink, content, githubLink } = props;
+  const { name, link, imageSrc, content, githubLink } = props;
   return (
     <Card sx={{ width: 345, m: 2 }}>
       <CardActionArea
@@ -21,7 +21,7 @@ const ProjectCard = (props) => {
         <CardMedia
           component="img"
           height="140"
-          image={imageLink}
+          src={imageSrc}
           alt={name}
           sx={{ objectFit: "contain", m: 1 }}
         />
