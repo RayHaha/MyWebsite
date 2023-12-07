@@ -9,7 +9,9 @@ const Home = (props) => {
       id="Home"
       style={{
         backgroundImage:
-          mode === "light" ? "url(/images/sun.jpg)" : "url(/images/night.jpg)",
+          mode === "light"
+            ? "url(./MyWebsite/images/sun.jpg)"
+            : "url(./MyWebsite/images/night.jpg)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
